@@ -28,8 +28,8 @@
     <div id="content-wrapper">
       <div class="inner clearfix">
         <section id="main-content">
-          <h3>
-<a id="welcome-to-prace4lofar-pages" class="anchor" href="#welcome-to-prace4lofar-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to PRACE4LOFAR Pages.</h3>
+          <h1>
+<a id="welcome-to-prace4lofar-pages" class="anchor" href="#welcome-to-prace4lofar-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to PRACE4LOFAR Pages.</h1>
 
 <p>On these pages we document the PRACE4LOFAR simulations which were run as part of the PRACE projects 2012061089 and 2014102339.</p>
 
@@ -45,24 +45,26 @@
 <p>The following describes the file formats. See Conversion Factors for more information on how to scale the
 contents to physical units.</p>
 
-<h1>
-<a id="gridded-quantities-from-the-nbody-simulations" class="anchor" href="#gridded-quantities-from-the-nbody-simulations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gridded quantities from the nbody simulations</h1>
+<h3>
+<a id="gridded-quantities-from-the-nbody-simulations" class="anchor" href="#gridded-quantities-from-the-nbody-simulations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gridded quantities from the nbody simulations</h3>
 
 <p>These files contain gridded quantities generated from the n-body results using Jun Koda's sph-smooth code.
 Normally we generate these for different grid sizes, for example 300^3, 600^3 and 1200^3. The file name does not contain any information about the grid size, normally you should figure out the grid size from the directory the files are in.</p>
 
 <p>All these files contain binary streams (no record separators, little endian) and start with a header specifying the size of the data contained. The arrays are stored in fortran style, meaning that the first index varies first: for example for 300^3 (1,1,1), (2,1,1), (3,1,1), .... (300,1,1), (1,2,1), (2,2,1), etc.</p>
 
-<p>1) *n_all.dat
-Contains the IGM density fields in cubep3m units. In these density fields the contribution from the halos have been subtracted. These are the density fields which we normally use for reionization simulations.
+<p><strong>1) *n_all.dat</strong></p>
+
+<p>Contains the IGM density fields in cubep3m units. In these density fields the contribution from the halos have been subtracted. These are the density fields which we normally use for reionization simulations.
 The number in the filename is the redshift. </p>
 
 <pre><code>* Header of three 4 byte integers: mx,my,mz
 * (mx,my,mz) array of 4 bytes; first index varies first (fortran style).
 </code></pre>
 
-<p>2) *ntot_all.dat
-Contains the total density fields in cubep3m units. The total density field contains the contributions
+<p><strong>2) *ntot_all.dat</strong></p>
+
+<p>Contains the total density fields in cubep3m units. The total density field contains the contributions
 from halos.
 The number in the filename is the redshift.</p>
 
@@ -70,30 +72,33 @@ The number in the filename is the redshift.</p>
 * (mx,my,mz) array of 4 bytes; first index varies first (fortran style).
 </code></pre>
 
-<p>3) *v_all.dat
-Contains the momentum field in cubep3m units.
+<p><strong>3) *v_all.dat</strong></p>
+
+<p>Contains the momentum field in cubep3m units.
 Number in the filename is the redshift.</p>
 
 <pre><code>* Header of three 4 byte integers: mx,my,mz
 * (3,mx,my,mz) array of 4 bytes; first index varies first (fortran).
 </code></pre>
 
-<p>4) *c_all.dat
-Contains a measurement of the clumping factor in each cell. Note that the numbers in these files are not the actual clumping factors and need conversion before using them in a simulation.</p>
+<p><strong>4) *c_all.dat</strong></p>
+
+<p>Contains a measurement of the clumping factor in each cell. Note that the numbers in these files are not the actual clumping factors and need conversion before using them in a simulation.</p>
 
 <pre><code>* Header of three 4 byte integers: mx,my,mz
 * (mx,my,mz) array of 4 bytes; first index varies first (fortran style).
 </code></pre>
 
-<h1>
-<a id="halo-list-quantities-from-the-n-body-simulation" class="anchor" href="#halo-list-quantities-from-the-n-body-simulation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Halo list quantities from the n-body simulation</h1>
+<h3>
+<a id="halo-list-quantities-from-the-n-body-simulation" class="anchor" href="#halo-list-quantities-from-the-n-body-simulation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Halo list quantities from the n-body simulation</h3>
 
 <p>The cubep3m code finds halos using a spherical overdensity method. These halos are recorded in halo lists which contain detailed information about the halos. There are two types of halo list files, depending on whether the run was performed with particle IDs or not. Since particle IDs impact the memory usage of cubep3m not all runs were performed with particle IDs.</p>
 
 <p>To use the halos in a reionization simulation we process them into source files. These source files contain the total mass of halos in certain mass bins in each grid cell. Since multiple halos may live in the same grid cell we reduce the number of sources by gridding the halos this way. Each grid size needs its own set of source files.</p>
 
-<p>1) *halo.dat
-Contains the full halo lists from cubep3m in cubep3m units. The number in the filename is the redshift. The file is in ASCII character. Each line contains the following halo data</p>
+<p><strong>1) *halo.dat</strong></p>
+
+<p>Contains the full halo lists from cubep3m in cubep3m units. The number in the filename is the redshift. The file is in ASCII character. Each line contains the following halo data</p>
 
 <ul>
 <li>halo position(:), </li>
@@ -108,8 +113,9 @@ Contains the full halo lists from cubep3m in cubep3m units. The number in the fi
 <li>var(:) - undocumented 3 vector</li>
 </ul>
 
-<p>2) *_resolution_sources.dat
-Contains the source lists. The number in the filename is the redshift. The resolution is indicated by the resolution string: coarsest, coarser, coarse. For example for the 500/h Mpc simulation, coarsest corresponds to the 300^3 grid.
+<p><strong>2) *_resolution_sources.dat</strong></p>
+
+<p>Contains the source lists. The number in the filename is the redshift. The resolution is indicated by the resolution string: coarsest, coarser, coarse. For example for the 500/h Mpc simulation, coarsest corresponds to the 300^3 grid.
 The file is in ASCII. The first line contains the number of sources in the file. After that each line lists</p>
 
 <ul>
@@ -118,14 +124,15 @@ The file is in ASCII. The first line contains the number of sources in the file.
 <li>mass in lower mass bin ('LMACHs', &lt; 10^9 M0)</li>
 </ul>
 
-<h1>
-<a id="reionization-simulation-quantities" class="anchor" href="#reionization-simulation-quantities" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reionization simulation quantities</h1>
+<h3>
+<a id="reionization-simulation-quantities" class="anchor" href="#reionization-simulation-quantities" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reionization simulation quantities</h3>
 
 <p>These are the results of C2Ray simulations. The file formats are either ASCII or unformatted fortran.
 Unformatted fortran consists of binary data wrapped in 4 byte record separators. When reading with fortran these record separators are used as a consistency check on the contents of the file. If you read these files with C or python you need to read in the records explicitly.</p>
 
-<p>1) xfrac3d*
-Contains the hydrogen ionization fraction.
+<p><strong>1) xfrac3d</strong>*</p>
+
+<p>Contains the hydrogen ionization fraction.
 Number in the filename is the redshift. The file contains two binary (little endian) records:</p>
 
 <pre><code>* Header of three 4 byte integers: mx,my,mz
@@ -136,16 +143,18 @@ Number in the filename is the redshift. The file contains two binary (little end
 for example xfrac3d_8.123.bin and xfrac3d_8.456.bin were both calculated using the density field from 8.789n_all.dat
 (and xfrac3d_8.123.bin provides the initial condition for the next time step which uses 8.123n_all.dat as density field).</p>
 
-<p>2) IonRates3D*
-Contains the photo-ionization rate, often denoted as Gamma in the literature.
+<p><strong>2) IonRates3D</strong>*</p>
+
+<p>Contains the photo-ionization rate, often denoted as Gamma in the literature.
 Number in the filename is the redshift. The file contains two binary (little endian) records:</p>
 
 <pre><code>* Header of three 4 byte integers: mx,my,mz
 * (mx,my,mz) array of 4 bytes; first index varies first (fortran).
 </code></pre>
 
-<p>3) Photon statistics files
-To be continued</p>
+<p><strong>3) Photon statistics files</strong></p>
+
+<p>To be continued</p>
 
 <h3>
 <a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
