@@ -166,7 +166,7 @@ Number in the filename is the redshift. The file contains two binary (little end
 
 <p>The densities are still given in grid masses. To convert to baryonic mass density (proper) multiply with</p>
 
-<pre><code>* rho_crit_0 * Omega_b * (1+z)^3 * (mx/nbox)^3
+<pre><code>  * rho_crit_0 * Omega_b * (1+z)^3 * (mx/nbox)^3
 </code></pre>
 
 <p>where</p>
@@ -181,7 +181,7 @@ Number in the filename is the redshift. The file contains two binary (little end
 
 <p>To convert to number density of baryons divide by</p>
 
-<pre><code> / (mu*m_p)
+<pre><code>   / (mu*m_p)
 </code></pre>
 
 <p>where</p>
@@ -196,12 +196,18 @@ Number in the filename is the redshift. The file contains two binary (little end
 <a id="velocity-files" class="anchor" href="#velocity-files" aria-hidden="true"><span class="octicon octicon-link"></span></a>Velocity files</h3>
 
 <p>These are called "v_all.dat" and contain a quantity more like "momentum", not velocity.
-To convert to proper velocities in cm/s take the following steps
-1. divide by n/8, where 'n' is the density data exactly as it is in the corresponding 'n_all.dat' file.
-2. multiply with</p>
+To convert to proper velocities in cm/s take the following steps</p>
 
-<pre><code> * boxsize_cm / nbox / 2 * 3 * sqrt(Omega_m) * H0 * (1+z)
-</code></pre>
+<ol>
+<li><p>divide by n/8, where 'n' is the density data exactly as it is in the corresponding 'n_all.dat' file.</p></li>
+<li>
+<p>multiply with</p>
+
+<ul>
+<li>boxsize_cm / nbox / 2 * 3 * sqrt(Omega_m) * H0 * (1+z)</li>
+</ul>
+</li>
+</ol>
 
 <p>In this</p>
 
