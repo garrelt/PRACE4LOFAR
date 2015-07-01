@@ -167,8 +167,12 @@ Number in the filename is the redshift. The file contains two binary (little end
 <p>The densities are still given in grid masses. To convert to baryonic mass density (proper) multiply with</p>
 
 <ul>
-<li>convert_density = rho_crit_0 * Omega_b * (1+z)^3 * (mx/nbox)^3
-where</li>
+<li>convert_density = rho_crit_0 * Omega_b * (1+z)^3 * (mx/nbox)^3</li>
+</ul>
+
+<p>where</p>
+
+<ul>
 <li>mx is the size of the coarsened density grid that you are reading in (e.g. 300)</li>
 <li>nbox is the size of the (fine) mesh being used in cubep3m simulation (see below, N-body parameters).</li>
 <li>rho_crit_0 is the critical density for z=0</li>
@@ -179,11 +183,16 @@ where</li>
 <p>To convert to number density of baryons divide by</p>
 
 <ul>
-<li>(mu*m_p)
-where</li>
+<li>
+<p>(mu*m_p)
+where</p>
+
+<ul>
 <li>mu = mean mass of baryons (~1.3) or rather mu=(1.0-abu_he)+4.0*abu_he</li>
 <li>m_p = mass of hydrogen</li>
 <li>abu_he = helium abundance by number (assumed to be 0.074)</li>
+</ul>
+</li>
 </ul>
 
 <h3>
@@ -192,9 +201,12 @@ where</li>
 <p>These are called "v_all.dat" and contain a quantity more like "momentum", not velocity.
 To convert to proper velocities in cm/s take the following steps
 1. divide by n/8, where 'n' is the density data exactly as it is in the corresponding 'n_all.dat' file.
-2. multiply with
-          * boxsize_cm / nbox / 2 * 3 * sqrt(Omega_m) * H0 * (1+z)
-In this</p>
+2. multiply with</p>
+
+<pre><code> * boxsize_cm / nbox / 2 * 3 * sqrt(Omega_m) * H0 * (1+z)
+</code></pre>
+
+<p>In this</p>
 
 <ul>
 <li>boxsize_cm is the comoving size of the volume (in cm)</li>
@@ -222,17 +234,17 @@ In this</p>
 
 <p>The following are the sets of simulations in PRACE4LOFAR. The value of nbox is needed for the unit conversions.</p>
 
-<p>boxsize=47.0  (Box size in Mpc/h comoving)
-number of particles = 1728^3
-nbox=2*1728  !&lt; cells/side (in N-body,fine grid)</p>
-
-<p>boxsize=244.0  (Box size in Mpc/h comoving)
-number of particles = 4000^3
-nbox=8000  (cells/side in N-body,fine grid)</p>
-
-<p>boxsize=500.0 (Box size in Mpc/h comoving)
-number of particles = 6912^3
-nbox=2*6912 (cells/side in N-body,fine grid)</p>
+<ul>
+<li>boxsize=47.0  (Box size in Mpc/h comoving)</li>
+<li>number of particles = 1728^3</li>
+<li><p>nbox=2*1728  !&lt; cells/side (in N-body,fine grid)</p></li>
+<li><p>boxsize=244.0  (Box size in Mpc/h comoving)</p></li>
+<li>number of particles = 4000^3</li>
+<li><p>nbox=8000  (cells/side in N-body,fine grid)</p></li>
+<li><p>boxsize=500.0 (Box size in Mpc/h comoving)</p></li>
+<li>number of particles = 6912^3</li>
+<li>nbox=2*6912 (cells/side in N-body,fine grid)</li>
+</ul>
         </section>
 
         <aside id="sidebar">
